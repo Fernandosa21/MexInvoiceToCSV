@@ -1,4 +1,5 @@
-const createFile = require('./CreateFile')
+const createFile = require('./CreateFile');
+const format = require('./format')
 
 const JSONtoCSV = (array, path) => {
     const headers = array
@@ -8,12 +9,13 @@ const JSONtoCSV = (array, path) => {
                 ...acc,
                 ...item.filter(a => acc.indexOf(a) === -1)
             ]
-        },[]);
+        },[])
+        .map(item => format(item));
     const text = `${headers.join(',')}\n${
         array.reduce((acc, item) => {
             return `${acc}${
                 headers
-                    .map(header => item[header])
+                    .map(header => format(item[header]))
                     .join(',')
             }\n`
         },'')
