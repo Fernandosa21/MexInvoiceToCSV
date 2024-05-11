@@ -1,11 +1,13 @@
-const fs = require('fs')
-
-const createFile = (text, fileName) => {
-    var stream = fs.createWriteStream(fileName);
-    stream.once('open', function (fd) {
-        stream.write(text);
-        stream.end();
-    });
+// const fs = require('fs')
+// https://spin.atomicobject.com/create-export-react-frontend/
+const createFile = (fileData, fileName) => {
+    const blob = new Blob([fileData], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = fileName;
+    link.href = url;
+    console.log(link)
+    link.click();
 }
 
-module.exports = createFile;
+export default createFile;
