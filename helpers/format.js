@@ -4,4 +4,4 @@ const format = (text) => {
   return text
 }
 
-module.exports = format
+export default format;

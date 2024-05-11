@@ -1,7 +1,7 @@
-const createFile = require('./CreateFile');
-const format = require('./format')
+import createFile from './CreateFile';
+import format from './format';
 
-const JSONtoCSV = (array, path) => {
+const JSONtoCSV = (array) => {
     const headers = array
         .map(item => Object.keys(item))
         .reduce((acc, item) => {
@@ -20,7 +20,8 @@ const JSONtoCSV = (array, path) => {
             }\n`
         },'')
     }`;
-    createFile(text,path)
+    //TODO: change file name, probably change it to "Facturas desde ${orderedInvoices[0].date} hasta ${orderedInvoices[orderedInvoices.lenght - 1].date}" or something similar
+    return createFile(text, 'test.csv')
 };
 
-module.exports = JSONtoCSV;
+export default JSONtoCSV;

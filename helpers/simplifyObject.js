@@ -18,5 +18,4 @@ const simplifyObject = (value, extraTag) => {
         return newObject;
     }, {});
 }
-
-module.exports = simplifyObject;
+export default simplifyObject;
