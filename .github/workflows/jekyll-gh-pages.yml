@@ -19,14 +19,16 @@ permissions:
 concurrency:
   group: 'pages'
   cancel-in-progress: true
-
+env:
+  # Setting an environment variable with the value of a configuration variable
+  VITE_GOOGLE_ANALYTICS: ${{ vars.VITE_GOOGLE_ANALYTICS }}
+  
 jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      VITE_GOOGLE_ANALYTICS: ${{ secrets.VITE_GOOGLE_ANALYTICS }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
