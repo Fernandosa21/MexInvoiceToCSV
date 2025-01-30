@@ -42,7 +42,10 @@ function App() {
   return (
     <>
       <div className="card">
-        {/* TODO: add instructions */}
+        <h1>Facturas</h1>
+        <p>Este programa te permite unir facturas en formato XML en un solo archivo CSV</p>
+        <p>Para ello, selecciona los archivos XML que deseas unir</p>
+        <p>El archivo se descargará automáticamente</p>
         <FileInput
           label="Elegir archivos"
           multiple
